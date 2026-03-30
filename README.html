@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Feline Finances README</title>
+    <style>
+        :root {
+            --sage: #9bb682;
+            --cream: #f9e6c5;
+            --paper: #fffaf0;
+            --ink: #2b2b2b;
+            --muted: #5f6656;
+            --panel: #f3eddc;
+            --line: rgba(43, 43, 43, 0.12);
+            --shadow: 0 18px 45px rgba(43, 43, 43, 0.14);
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: "Trebuchet MS", Arial, sans-serif;
+            color: var(--ink);
+            line-height: 1.65;
+            background:
+                radial-gradient(circle at top left, rgba(255, 250, 240, 0.65), transparent 34%),
+                radial-gradient(circle at bottom right, rgba(155, 182, 130, 0.22), transparent 28%),
+                linear-gradient(135deg, #8faa73 0%, #9bb682 25%, #dfe8cb 100%);
+            padding: 32px 20px 56px;
+        }
+
+        .page {
+            max-width: 1120px;
+            margin: 0 auto;
+        }
+
+        .hero,
+        .section,
+        .footer-card {
+            background: rgba(255, 250, 240, 0.95);
+            border: 1px solid rgba(255, 255, 255, 0.55);
+            border-radius: 28px;
+            box-shadow: var(--shadow);
+            overflow: hidden;
+        }
+
+        .hero {
+            padding: 42px;
+            position: relative;
+        }
+
+        .hero::after {
+            content: "";
+            position: absolute;
+            right: -70px;
+            top: -70px;
+            width: 220px;
+            height: 220px;
+            border-radius: 50%;
+            background: rgba(155, 182, 130, 0.18);
+        }
+
+        .eyebrow {
+            display: inline-block;
+            padding: 8px 14px;
+            border-radius: 999px;
+            background: rgba(155, 182, 130, 0.18);
+            color: #4f5f41;
+            font-size: 0.9rem;
+            font-weight: 700;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+        }
+
+        h1,
+        h2,
+        h3,
+        h4 {
+            margin: 0;
+            color: #415236;
+        }
+
+        h1 {
+            font-size: clamp(2.4rem, 5vw, 4.5rem);
+            line-height: 1.05;
+            margin-top: 18px;
+        }
+
+        h2 {
+            font-size: clamp(1.7rem, 3vw, 2.25rem);
+            margin-bottom: 18px;
+        }
+
+        h3 {
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+        }
+
+        p {
+            margin: 0 0 14px;
+            font-size: 1rem;
+        }
+
+        .lead {
+            max-width: 760px;
+            font-size: 1.12rem;
+            color: var(--muted);
+            margin-top: 18px;
+        }
+
+        .hero-grid,
+        .grid-2,
+        .grid-3,
+        .metrics {
+            display: grid;
+            gap: 18px;
+        }
+
+        .hero-grid {
+            grid-template-columns: 2.2fr 1fr;
+            margin-top: 28px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .grid-2 {
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+
+        .grid-3 {
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+        }
+
+        .metrics {
+            grid-template-columns: repeat(4, minmax(0, 1fr));
+        }
+
+        .section {
+            margin-top: 24px;
+            padding: 30px;
+        }
+
+        .card,
+        .metric,
+        .callout,
+        .timeline-step,
+        .career-card,
+        .skill-tag {
+            background: var(--paper);
+            border: 1px solid var(--line);
+            border-radius: 20px;
+        }
+
+        .card,
+        .career-card,
+        .timeline-step,
+        .callout {
+            padding: 20px;
+        }
+
+        .metric {
+            padding: 18px;
+            text-align: center;
+            background: linear-gradient(180deg, rgba(255, 255, 255, 0.95), rgba(243, 237, 220, 0.95));
+        }
+
+        .metric strong {
+            display: block;
+            font-size: 2rem;
+            color: #3f5131;
+        }
+
+        .metric span {
+            color: var(--muted);
+            font-size: 0.92rem;
+        }
+
+        .label {
+            display: inline-block;
+            margin-bottom: 10px;
+            padding: 6px 10px;
+            border-radius: 999px;
+            background: rgba(155, 182, 130, 0.16);
+            color: #4a5b3d;
+            font-size: 0.85rem;
+            font-weight: 700;
+        }
+
+        ul,
+        ol {
+            margin: 0;
+            padding-left: 20px;
+        }
+
+        li {
+            margin-bottom: 8px;
+        }
+
+        .checklist {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .checklist li::before {
+            content: "■";
+            color: var(--sage);
+            margin-right: 10px;
+        }
+
+        .skills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 12px;
+        }
+
+        .skill-tag {
+            padding: 10px 14px;
+            font-size: 0.94rem;
+            background: rgba(155, 182, 130, 0.08);
+        }
+
+        .timeline {
+            display: grid;
+            gap: 14px;
+        }
+
+        .timeline-step {
+            position: relative;
+            padding-left: 64px;
+        }
+
+        .timeline-step .number {
+            position: absolute;
+            left: 18px;
+            top: 18px;
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            background: var(--sage);
+            color: #fff;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .career-card {
+            background: linear-gradient(180deg, rgba(255, 255, 255, 0.97), rgba(249, 230, 197, 0.72));
+        }
+
+        .career-card h3 {
+            margin-bottom: 8px;
+        }
+
+        .career-card h4 {
+            font-size: 1rem;
+            margin: 16px 0 8px;
+            color: #5a6b4e;
+        }
+
+        .two-column-list {
+            columns: 2;
+            column-gap: 22px;
+        }
+
+        .code-block {
+            font-family: Consolas, "Courier New", monospace;
+            font-size: 0.95rem;
+            padding: 12px 14px;
+            border-radius: 14px;
+            background: #f1ecde;
+            border: 1px solid rgba(65, 82, 54, 0.12);
+            overflow-x: auto;
+        }
+
+        .footer-card {
+            margin-top: 24px;
+            padding: 26px 30px;
+            text-align: center;
+        }
+
+        .small {
+            color: var(--muted);
+            font-size: 0.95rem;
+        }
+
+        a {
+            color: #50623f;
+        }
+
+        @media (max-width: 900px) {
+            .hero,
+            .section,
+            .footer-card {
+                padding: 22px;
+            }
+
+            .hero-grid,
+            .grid-2,
+            .grid-3,
+            .metrics {
+                grid-template-columns: 1fr;
+            }
+
+            .two-column-list {
+                columns: 1;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="page">
+        <section class="hero">
+            <span class="eyebrow">Event Presentation README</span>
+            <h1>Feline Finances</h1>
+            <p class="lead">
+                Feline Finances is a virtual pet game for the Introduction to Programming prompt. The player creates a cat,
+                keeps every care stat above zero, and manages the cost of pet ownership through shopping, chores, and vet care.
+            </p>
+
+            <div class="hero-grid">
+                <div class="card">
+                    <span class="label">Judge Focus</span>
+                    <ul class="checklist">
+                        <li>Customization: name, cat type, and personality</li>
+                        <li>Pet care: feed, play, rest, clean, and vet visits</li>
+                        <li>Reactions: mood changes, health loss, and game-over on neglect</li>
+                        <li>Cost of care: store purchases, spending totals, and chores for income</li>
+                        <li>Documentation, save system, validation, and modular code structure</li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <span class="label">Quick Stats</span>
+                    <div class="metrics" style="grid-template-columns: repeat(2, minmax(0, 1fr));">
+                        <div class="metric"><strong>4</strong><span>Cat types</span></div>
+                        <div class="metric"><strong>5</strong><span>Core stats</span></div>
+                        <div class="metric"><strong>3</strong><span>Chore minigames</span></div>
+                        <div class="metric"><strong>1</strong><span>Save file</span></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2>Rubric Match</h2>
+            <div class="grid-3">
+                <div class="card">
+                    <span class="label">Code Quality</span>
+                    <ul>
+                        <li>Code is split into modular files inside source/scripts</li>
+                        <li>Separate files handle UI, storage, models, assets, config, and game flow</li>
+                        <li>The project uses classes, functions, dictionaries, lists, and conditionals</li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <span class="label">User Experience</span>
+                    <ul>
+                        <li>Clear setup controls and simple mouse-based gameplay</li>
+                        <li>Help, report, store, vet, chore, and delete-save overlays are built into the UI</li>
+                        <li>Window resizing preserves the layout through scaled rendering</li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <span class="label">Validation And Storage</span>
+                    <ul>
+                        <li>Name input is limited during setup</li>
+                        <li>Save data is stored in JSON and validated before loading</li>
+                        <li>Progress, inventory, spending, and achievements persist in the save file</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="grid-2" style="margin-top: 18px;">
+                <div class="card">
+                    <span class="label">Functionality</span>
+                    <ul>
+                        <li>The user creates a custom pet before play begins</li>
+                        <li>The pet can be fed, played with, rested, cleaned, and treated at the vet</li>
+                        <li>Health is separate and only restored through paid vet visits</li>
+                        <li>Money is spent on food, toys, grooming, and vet care</li>
+                        <li>Money is earned through chores on the Taskboard</li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <span class="label">Presentable Report</span>
+                    <ul>
+                        <li>The report overlay shows mood, survival time, money, spending, chores, and achievements</li>
+                        <li>The main screen also shows live stats, inventory, total earned, and total spent</li>
+                        <li>The README and source code are included for documentation</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2>Main Features</h2>
+            <div class="grid-3">
+                <div class="card">
+                    <span class="label">Care Loop</span>
+                    <ul>
+                        <li>Hunger, happiness, energy, cleanliness, and health bars</li>
+                        <li>Mood changes based on current condition</li>
+                        <li>If any stat reaches zero, the pet dies and the run ends</li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <span class="label">Money Loop</span>
+                    <ul>
+                        <li>Whiskermart sells care items</li>
+                        <li>Total earned and total spent are always visible</li>
+                        <li>Expense categories track food, toys, grooming, and vet care</li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <span class="label">Extra Features</span>
+                    <ul>
+                        <li>Care report with stats, spending, chores, and badges</li>
+                        <li>Achievements and savings goal</li>
+                        <li>Delete Save button with confirmation</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2>Demo Order</h2>
+            <div class="timeline">
+                <div class="timeline-step">
+                    <div class="number">1</div>
+                    <h3>Create A Cat</h3>
+                    <p>Show name entry, type selection, and personality selection.</p>
+                </div>
+                <div class="timeline-step">
+                    <div class="number">2</div>
+                    <h3>Show The Main Screen</h3>
+                    <p>Point out the five stats, mood, inventory, money, and the right-side action buttons.</p>
+                </div>
+                <div class="timeline-step">
+                    <div class="number">3</div>
+                    <h3>Show Cost Of Care</h3>
+                    <p>Open Whiskermart, buy an item, and explain that health requires paid vet visits.</p>
+                </div>
+                <div class="timeline-step">
+                    <div class="number">4</div>
+                    <h3>Show Income</h3>
+                    <p>Open the Taskboard and complete one chore to demonstrate the earn-and-spend loop.</p>
+                </div>
+                <div class="timeline-step">
+                    <div class="number">5</div>
+                    <h3>Show Report And Save Tools</h3>
+                    <p>Open the report overlay, then point out the delete-save confirmation feature.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2>How To Run</h2>
+            <div class="grid-2">
+                <div class="card">
+                    <span class="label">Run Steps</span>
+                    <ol>
+                        <li>Install Python 3.</li>
+                        <li>Install Pygame with <strong>pip install pygame</strong>.</li>
+                        <li>Open the project folder.</li>
+                        <li>Run <strong>python source/scripts/main.py</strong>.</li>
+                    </ol>
+                </div>
+                <div class="card">
+                    <span class="label">Project Structure</span>
+                    <ul>
+                        <li>Entry point: source/scripts/main.py</li>
+                        <li>Core code: source/scripts/core</li>
+                        <li>Gameplay loop: source/scripts/gameplay</li>
+                        <li>UI and assets loader: source/scripts/interface and source/scripts/engine</li>
+                        <li>Assets: source/assets</li>
+                        <li>Save file: source/save_data.json</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2>Technical Summary</h2>
+            <div class="grid-2">
+                <div class="card">
+                    <span class="label">Implementation</span>
+                    <ul>
+                        <li>Python and Pygame</li>
+                        <li>Classes, functions, lists, dictionaries, and conditionals</li>
+                        <li>JSON save system with validation</li>
+                        <li>Modular structure for game logic, UI, storage, models, and assets</li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <span class="label">Presentation Notes</span>
+                    <ul>
+                        <li>This README is intentionally short for a 7-minute presentation</li>
+                        <li>The best live demonstration points are setup, store, vet, chores, report, and delete save</li>
+                        <li>If needed, mention that the game is fully offline and does not use outside services</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section class="footer-card">
+            <h2>Thank You For Reviewing Feline Finances</h2>
+            <p>
+                This project combines virtual pet care, budgeting, and player responsibility in a format designed to be easy to explain and easy to demonstrate live.
+            </p>
+            <p class="small">Created by Daksh Honnamane | Feline Finances | 2026</p>
+        </section>
+    </div>
+</body>
+</html>
