@@ -1,0 +1,34 @@
+{
+    "name": "dwa",
+    "type": "Orange",
+    "personality": "Playful",
+    "stats": {
+        "hunger": 94,
+        "happiness": 96,
+        "energy": 94,
+        "cleanliness": 96,
+        "health": 100,
+        "age_days": 3
+    },
+    "money": 50,
+    "total_spent": 0,
+    "total_earned": 0,
+    "inventory": {
+        "Meowmunch": 0,
+        "Purrplay": 0,
+        "Furbath": 0
+    },
+    "expense_breakdown": {
+        "Food": 0,
+        "Toys": 0,
+        "Grooming": 0,
+        "Vet": 0
+    },
+    "vet_visits": 0,
+    "care_actions": 0,
+    "chores_completed": 0,
+    "achievements": [
+        "Well Loved"
+    ],
+    "last_status": "Welcome to Feline Finances!"
+}
