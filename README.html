@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Feline Finances README</title>
+    <style>
+        :root {
+            --sage: #9bb682;
+            --cream: #f9e6c5;
+            --paper: #fffaf0;
+            --ink: #2b2b2b;
+            --muted: #5f6656;
+            --panel: #f3eddc;
+            --line: rgba(43, 43, 43, 0.12);
+            --shadow: 0 18px 45px rgba(43, 43, 43, 0.14);
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: "Trebuchet MS", Arial, sans-serif;
+            color: var(--ink);
+            line-height: 1.65;
+            background:
+                radial-gradient(circle at top left, rgba(255, 250, 240, 0.65), transparent 34%),
+                radial-gradient(circle at bottom right, rgba(155, 182, 130, 0.22), transparent 28%),
+                linear-gradient(135deg, #8faa73 0%, #9bb682 25%, #dfe8cb 100%);
+            padding: 32px 20px 56px;
+        }
+
+        .page {
+            max-width: 1120px;
+            margin: 0 auto;
+        }
+
+        .hero,
+        .section,
+        .footer-card {
+            background: rgba(255, 250, 240, 0.95);
+            border: 1px solid rgba(255, 255, 255, 0.55);
+            border-radius: 28px;
+            box-shadow: var(--shadow);
+            overflow: hidden;
+        }
+
+        .hero {
+            padding: 42px;
+            position: relative;
+        }
+
+        .hero::after {
+            content: "";
+            position: absolute;
+            right: -70px;
+            top: -70px;
+            width: 220px;
+            height: 220px;
+            border-radius: 50%;
+            background: rgba(155, 182, 130, 0.18);
+        }
+
+        .eyebrow {
+            display: inline-block;
+            padding: 8px 14px;
+            border-radius: 999px;
+            background: rgba(155, 182, 130, 0.18);
+            color: #4f5f41;
+            font-size: 0.9rem;
+            font-weight: 700;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+        }
+
+        h1,
+        h2,
+        h3,
+        h4 {
+            margin: 0;
+            color: #415236;
+        }
+
+        h1 {
+            font-size: clamp(2.4rem, 5vw, 4.5rem);
+            line-height: 1.05;
+            margin-top: 18px;
+        }
+
+        h2 {
+            font-size: clamp(1.7rem, 3vw, 2.25rem);
+            margin-bottom: 18px;
+        }
+
+        h3 {
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+        }
+
+        p {
+            margin: 0 0 14px;
+            font-size: 1rem;
+        }
+
+        .lead {
+            max-width: 760px;
+            font-size: 1.12rem;
+            color: var(--muted);
+            margin-top: 18px;
+        }
+
+        .hero-grid,
+        .grid-2,
+        .grid-3,
+        .metrics {
+            display: grid;
+            gap: 18px;
+        }
+
+        .hero-grid {
+            grid-template-columns: 2.2fr 1fr;
+            margin-top: 28px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .grid-2 {
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+
+        .grid-3 {
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+        }
+
+        .metrics {
+            grid-template-columns: repeat(4, minmax(0, 1fr));
+        }
+
+        .section {
+            margin-top: 24px;
+            padding: 30px;
+        }
+
+        .card,
+        .metric,
+        .callout,
+        .timeline-step,
+        .career-card,
+        .skill-tag {
+            background: var(--paper);
+            border: 1px solid var(--line);
+            border-radius: 20px;
+        }
+
+        .card,
+        .career-card,
+        .timeline-step,
+        .callout {
+            padding: 20px;
+        }
+
+        .metric {
+            padding: 18px;
+            text-align: center;
+            background: linear-gradient(180deg, rgba(255, 255, 255, 0.95), rgba(243, 237, 220, 0.95));
+        }
+
+        .metric strong {
+            display: block;
+            font-size: 2rem;
+            color: #3f5131;
+        }
+
+        .metric span {
+            color: var(--muted);
+            font-size: 0.92rem;
+        }
+
+        .label {
+            display: inline-block;
+            margin-bottom: 10px;
+            padding: 6px 10px;
+            border-radius: 999px;
+            background: rgba(155, 182, 130, 0.16);
+            color: #4a5b3d;
+            font-size: 0.85rem;
+            font-weight: 700;
+        }
+
+        ul,
+        ol {
+            margin: 0;
+            padding-left: 20px;
+        }
+
+        li {
+            margin-bottom: 8px;
+        }
+
+        .checklist {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .checklist li::before {
+            content: "■";
+            color: var(--sage);
+            margin-right: 10px;
+        }
+
+        .skills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 12px;
+        }
+
+        .skill-tag {
+            padding: 10px 14px;
+            font-size: 0.94rem;
+            background: rgba(155, 182, 130, 0.08);
+        }
+
+        .timeline {
+            display: grid;
+            gap: 14px;
+        }
+
+        .timeline-step {
+            position: relative;
+            padding-left: 64px;
+        }
+
+        .timeline-step .number {
+            position: absolute;
+            left: 18px;
+            top: 18px;
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            background: var(--sage);
+            color: #fff;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .career-card {
+            background: linear-gradient(180deg, rgba(255, 255, 255, 0.97), rgba(249, 230, 197, 0.72));
+        }
+
+        .career-card h3 {
+            margin-bottom: 8px;
+        }
+
+        .career-card h4 {
+            font-size: 1rem;
+            margin: 16px 0 8px;
+            color: #5a6b4e;
+        }
+
+        .two-column-list {
+            columns: 2;
+            column-gap: 22px;
+        }
+
+        .code-block {
+            font-family: Consolas, "Courier New", monospace;
+            font-size: 0.95rem;
+            padding: 12px 14px;
+            border-radius: 14px;
+            background: #f1ecde;
+            border: 1px solid rgba(65, 82, 54, 0.12);
+            overflow-x: auto;
+        }
+
+        .footer-card {
+            margin-top: 24px;
+            padding: 26px 30px;
+            text-align: center;
+        }
+
+        .small {
+            color: var(--muted);
+            font-size: 0.95rem;
+        }
+
+        a {
+            color: #50623f;
+        }
+
+        @media (max-width: 900px) {
+            .hero,
+            .section,
+            .footer-card {
+                padding: 22px;
+            }
+
+            .hero-grid,
+            .grid-2,
+            .grid-3,
+            .metrics {
+                grid-template-columns: 1fr;
+            }
+
+            .two-column-list {
+                columns: 1;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="page">
+
+        <!-- HERO -->
+        <section class="hero">
+            <span class="eyebrow">FBLA · Introduction to Programming · 2026</span>
+            <h1>Feline Finances</h1>
+            <p class="lead">
+                A virtual cat ownership game — adopt a cat, manage five care stats, earn money through chores, and spend it on food, toys, grooming, and vet care.
+            </p>
+            <div class="hero-grid">
+                <div class="card">
+                    <span class="label">At a Glance</span>
+                    <ul class="checklist">
+                        <li>Choose cat type, name, and personality at the start</li>
+                        <li>Keep hunger, happiness, energy, cleanliness, and health above zero</li>
+                        <li>Earn money via chore minigames on the Taskboard</li>
+                        <li>Spend on items from Whiskermart or pay for vet visits</li>
+                        <li>Neglect any stat to zero and the run ends</li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <span class="label">Quick Stats</span>
+                    <div class="metrics" style="grid-template-columns: repeat(2, minmax(0, 1fr));">
+                        <div class="metric"><strong>4</strong><span>Cat types</span></div>
+                        <div class="metric"><strong>5</strong><span>Care stats</span></div>
+                        <div class="metric"><strong>3</strong><span>Chore games</span></div>
+                        <div class="metric"><strong>1</strong><span>Save File</span></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2>Main Features</h2>
+            <div class="grid-3">
+                <div class="card">
+                    <span class="label">Care Loop</span>
+                    <ul>
+                        <li>Hunger, happiness, energy, cleanliness, and health bars</li>
+                        <li>Mood changes based on current condition</li>
+                        <li>If any stat reaches zero, the pet dies and the run ends</li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <span class="label">Money Loop</span>
+                    <ul>
+                        <li>Whiskermart sells care items</li>
+                        <li>Total earned and total spent are always visible</li>
+                        <li>Expense categories track food, toys, grooming, and vet care</li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <span class="label">Extra Features</span>
+                    <ul>
+                        <li>Care report with stats, spending, chores, and badges</li>
+                        <li>Achievements and savings goal</li>
+                        <li>Delete Save button with confirmation</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- 1. CODE QUALITY -->
+        <section class="section">
+            <h2>Code Quality</h2>
+            <div class="grid-2">
+                <div class="card">
+                    <span class="label">Comments &amp; Common Conventions</span>
+                    <ul>
+                        <li>Every function has a name describing its purpose</li>
+                        <li>Names reflect intent — e.g., <code>update_stats</code>, <code>apply_item</code>, <code>load_save</code></li>
+                        <li>Consistent indentation and formatting across all files</li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <span class="label">Modular Structure</span>
+                    <ul>
+                        <li>7 files across 4 packages: <code>core</code>, <code>engine</code>, <code>gameplay</code>, <code>interface</code></li>
+                        <li>Each file has one responsibility — models, storage, UI, assets, game loop</li>
+                        <li>No large monolithic blocks — logic is broken into focused functions</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- 2. USER EXPERIENCE -->
+        <section class="section">
+            <h2>User Experience</h2>
+            <div class="grid-3">
+                <div class="card">
+                    <span class="label">Clear Instructions</span>
+                    <ul>
+                        <li>Setup screen guides through each customization step</li>
+                        <li>All buttons are labeled with visible text and icons</li>
+                        <li>Stat bars are always visible on the main screen</li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <span class="label">Navigation</span>
+                    <ul>
+                        <li>Dedicated overlays: Store, Vet, Taskboard, Report, Help</li>
+                        <li>Interactive Help menu accessible at any point in the game</li>
+                        <li>No spelling errors or navigation dead-ends anywhere in the UI</li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <span class="label">Input Validation</span>
+                    <ul>
+                        <li>Cat name is length-limited during the setup screen</li>
+                        <li>Menu actions only accept valid choices</li>
+                        <li>Save file is validated structurally and logically before loading</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. FUNCTIONALITY -->
+        <section class="section">
+            <h2>Functionality</h2>
+            <div class="grid-3">
+                <div class="card">
+                    <span class="label">Addresses the Prompt</span>
+                    <ul>
+                        <li>Topic: the real cost and responsibility of pet ownership</li>
+                        <li>Every care action has a direct financial consequence</li>
+                        <li>Correlation explained on the setup screen and in the README</li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <span class="label">Report Output</span>
+                    <ul>
+                        <li>Report overlay: mood, survival time, chores done, achievements</li>
+                        <li>Spending breakdown by category — food, toys, grooming, vet</li>
+                        <li>Live HUD shows current stats, inventory, earned, and spent totals</li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <span class="label">Data Storage</span>
+                    <ul>
+                        <li>Each variable has one clear purpose and correct data type</li>
+                        <li>Lists and dicts store inventory, achievements, and spending history</li>
+                        <li>All game state is saved to and loaded from a JSON file</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- 4. DOCUMENTATION -->
+        <section class="section">
+            <h2>Documentation</h2>
+            <div class="grid-2">
+                <div class="card">
+                    <span class="label">What's Included</span>
+                    <ul class="checklist">
+                        <li>Full source code - to read or modify</li>
+                        <li>FelineFinances.exe - the file containing the game</li>
+                        <li>LICENSE - explaining how users can use my code legally</li>
+                        <li>README.html — explains the program and how to run it</li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <span class="label">Implementation & Playing</span>
+                    <ul>
+                        <li>Download the game from the <a href="https://github.com/daksh-honnamane/FBLA-Feline-Finances">Github page</a> and click the app.</li>
+                        <li>Python and Pygame</li>
+                        <li>JSON save system with validation</li>
+                        <li>All assets built into Pygame or made in Canva </li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- FOOTER -->
+        <section class="footer-card">
+            <h2>Thank You For Reviewing Feline Finances</h2>
+            <hr>
+            <p class="small">Created by Daksh Honnamane &nbsp;·&nbsp; Feline Finances &nbsp;·&nbsp; 2026</p>
+        </section>
+
+    </div>
+</body>
+</html>
